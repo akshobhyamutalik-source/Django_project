@@ -16,7 +16,7 @@ db.sqlite3
 db.sqlite3-journal
 
 # Media files
-media/
+# media/ folder is intentionally tracked in git so puppy images deploy directly to Render
 
 # Editor / IDE
 .vscode/
