@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Questions & answers | TeddyPups U.A.E.{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <span class="hero-tag">Help & Clarity</span>
+        <h1 class="display-5 fw-bold mb-3">Questions & answers</h1>
+        <p class="text-secondary mx-auto" style="max-width: 600px;">
+            Everything you need to know about adopting a healthy, premium teacup puppy in Dubai with TeddyPups.
+        </p>
+    </div>
+
+    <!-- Accordion Matching Reference Site -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-9">
+            <div class="accordion" id="teddyFaq">
+
+                <!-- Q1 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            Are your puppies vaccinated and health-checked?
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Yes, absolutely. All our puppies undergo thorough veterinary examinations before and upon arrival in Dubai. They receive age-appropriate core vaccinations, certified internal deworming treatments, an official ISO microchip, and an international veterinary health passport.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            Can I meet a puppy before I decide?
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Yes! For puppies currently in Dubai, you are warmly invited to visit our private showroom in Downtown Dubai. You can hold, interact with, and observe the puppy in person in a calm, sanitary environment before making your decision.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            Can I take my puppy home the same day?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Yes. If you choose an available puppy present in our Dubai showroom and your home is prepared, you can complete the adoption agreement and take your puppy home immediately alongside their starter food, health documents, and care guidelines.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq4">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                            Do you import puppies from abroad?
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Yes. We specialize in bespoke imports of pedigree Korean Teacup puppies and European bloodlines from certified, ethical partner breeders renowned for healthy miniature breeds.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq5">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                            How does an imported puppy travel to Dubai?
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Imported puppies travel via approved commercial airlines with certified pet couriers inside temperature-controlled cabins or live animal compartments under strict IATA live animal regulations, accompanied by veterinary health clearances.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq6">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                            Will I see photos and health details first?
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Definitely. Before committing, you receive HD photos, multiple videos of the puppy playing and walking, recent weight measurements, and copies of veterinary medical records.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="accordion-item mb-3 border border-secondary-subtle rounded-4 overflow-hidden shadow-sm">
+                    <h2 class="accordion-header" id="faq7">
+                        <button class="accordion-button collapsed fw-bold py-3 px-4 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                            Do you deliver?
+                        </button>
+                    </h2>
+                    <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#teddyFaq">
+                        <div class="accordion-body px-4 pb-4 text-secondary leading-relaxed bg-white">
+                            Yes, we provide white-glove private delivery in air-conditioned vehicles across Dubai, Abu Dhabi, Sharjah, and across all seven Emirates directly to your residence.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Need More Help -->
+    <div class="cta-teddy text-center">
+        <h3 class="display-6 fw-bold mb-3">Still have a question?</h3>
+        <p class="text-secondary mb-4 mx-auto" style="max-width: 500px;">
+            We are always here to help. Contact our puppy adoption specialists directly on WhatsApp for immediate answers.
+        </p>
+        <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I%20have%20a%20question%20about%20your%20puppies." 
+           target="_blank" 
+           class="btn-whatsapp-teddy">
+            <i class="bi bi-whatsapp me-2"></i> Chat on WhatsApp
+        </a>
+    </div>
+
+</div>
+{% endblock %}

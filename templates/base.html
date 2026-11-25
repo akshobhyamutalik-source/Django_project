@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TeddyPups U.A.E. — Premium teacup puppies in Dubai{% endblock %}</title>
+
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Custom Luxury Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- =========================================
+         NAVIGATION BAR (TeddyPups)
+    ========================================= -->
+    <nav class="navbar navbar-expand-lg navbar-teddy sticky-top">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="brand-title d-flex align-items-center" href="{% url 'home' %}">
+                <span>TeddyPups</span>
+                <span class="brand-badge">U.A.E.</span>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTeddy" aria-controls="navbarTeddy" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarTeddy">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'puppies' %}">Puppies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'happy_families' %}">Happy families</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'how_it_works' %}">How it works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'faq' %}">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-teddy" href="{% url 'contact' %}">Visit & contact</a>
+                    </li>
+                </ul>
+
+                <!-- Right Action Button: WhatsApp Us -->
+                <div class="d-flex">
+                    <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I'd%20like%20to%20discuss%20adopting%20a%20puppy." 
+                       target="_blank" 
+                       class="btn-whatsapp-teddy">
+                        <i class="bi bi-whatsapp me-2"></i> WhatsApp us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =========================================
+         PAGE CONTENT
+    ========================================= -->
+    <div class="flex-grow-1">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- =========================================
+         FOOTER (TeddyPups)
+    ========================================= -->
+    <footer class="footer-teddy">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Column 1: Brand -->
+                <div class="col-lg-4 col-md-6">
+                    <a class="brand-title text-white d-inline-flex align-items-center mb-3" href="{% url 'home' %}">
+                        <span>TeddyPups</span>
+                        <span class="brand-badge">U.A.E.</span>
+                    </a>
+                    <p class="text-secondary small leading-relaxed">
+                        Premium teacup puppies in Dubai. Ethically raised, vet-certified, and microchipped. Connecting loving families with their dream teacup companions across the U.A.E.
+                    </p>
+                    <div class="d-flex gap-3 fs-5 mt-4">
+                        <a href="https://wa.me/919898124987" target="_blank" class="text-secondary hover-white"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="text-secondary hover-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-secondary hover-white"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" class="text-secondary hover-white"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Explore -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-title">Explore</div>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="mb-2"><a href="{% url 'puppies' %}">Available puppies</a></li>
+                        <li class="mb-2"><a href="{% url 'happy_families' %}">Happy families</a></li>
+                        <li class="mb-2"><a href="{% url 'how_it_works' %}">How it works</a></li>
+                        <li class="mb-2"><a href="{% url 'faq' %}">Questions & answers</a></li>
+                        <li class="mb-2"><a href="{% url 'contact' %}">Visit & contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Teacup Breeds -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-title">Featured Breeds</div>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="{% url 'puppies' %}?search=Maltipoo">Teacup Maltipoo</a></li>
+                        <li class="mb-2"><a href="{% url 'puppies' %}?search=Korean">Korean Teacup Poodle</a></li>
+                        <li class="mb-2"><a href="{% url 'puppies' %}?search=Pomeranian">Teacup Pomeranian</a></li>
+                        <li class="mb-2"><a href="{% url 'puppies' %}?search=Toy Poodle">Toy Poodle</a></li>
+                        <li class="mb-2"><a href="{% url 'puppies' %}?search=Cavapoo">Cavapoo Puppies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Say Hello -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-title">Say Hello</div>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2 text-warning"></i> Downtown Dubai, U.A.E.</li>
+                        <li class="mb-2">
+                            <a href="https://wa.me/919898124987" target="_blank" class="text-secondary">
+                                <i class="bi bi-whatsapp me-2 text-success"></i> +91 98981 24987
+                            </a>
+                        </li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2 text-warning"></i> hello@teddypups.ae</li>
+                        <li class="mb-2"><i class="bi bi-clock me-2 text-warning"></i> Mon - Sun: 10:00 AM - 9:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-secondary my-4 opacity-25">
+
+            <div class="row align-items-center small text-secondary">
+                <div class="col-md-6 text-center text-md-start">
+                    &copy; 2026 TeddyPups U.A.E. All rights reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    Premium teacup companions in Dubai.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Quick Button -->
+    <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I'd%20like%20to%20discuss%20adopting%20a%20puppy." 
+       target="_blank" 
+       class="whatsapp-float-teddy" 
+       title="Chat on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

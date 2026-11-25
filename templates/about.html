@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - PuppyWorld{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 fw-semibold">Our Story</span>
+            <h1 class="fw-bold mb-3">About <span style="color: #f27a24;">PuppyWorld</span></h1>
+            <p class="lead text-muted">
+                PuppyWorld was founded by passionate dog lovers with one simple mission: to connect healthy, happy puppies with caring, loving families.
+            </p>
+            <p class="text-muted">
+                We believe that bringing a pet home is a lifelong commitment. That is why every puppy in our care receives regular veterinary checkups, essential vaccinations, a nutritious diet, and plenty of love and socialization.
+            </p>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=700&q=80" 
+                 alt="Puppies playing together" 
+                 class="img-fluid rounded-4 shadow">
+        </div>
+    </div>
+
+    <!-- Core Values -->
+    <div class="row g-4 text-center mt-4">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h4 class="fw-bold mb-2">Love & Care</h4>
+                <p class="text-muted">Every puppy is raised with genuine love, warmth, and gentle care from day one.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h4 class="fw-bold mb-2">Health Priority</h4>
+                <p class="text-muted">Comprehensive medical checks, complete deworming, and up-to-date vaccinations.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h4 class="fw-bold mb-2">Adoption Support</h4>
+                <p class="text-muted">Ongoing guidance and expert advice for new pet parents every step of the way.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

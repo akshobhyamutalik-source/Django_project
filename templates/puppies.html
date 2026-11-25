@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Available puppies | TeddyPups U.A.E.{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Header & Search -->
+    <div class="text-center mb-5">
+        <span class="hero-tag">In Dubai & Ready For Homes</span>
+        <h1 class="display-5 fw-bold mb-3">Available puppies</h1>
+        <p class="text-secondary mx-auto" style="max-width: 600px;">
+            Every puppy is vet-checked, microchipped, fully vaccinated, and ready to meet you in Downtown Dubai.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-7 col-lg-5">
+                <form method="GET" action="{% url 'puppies' %}" class="d-flex rounded-pill p-1 bg-white border border-secondary-subtle shadow-sm">
+                    <input type="text" 
+                           name="search" 
+                           value="{{ search_query|default:'' }}" 
+                           class="form-control border-0 rounded-pill ps-4" 
+                           placeholder="Search by breed (Maltipoo, Poodle, Pomeranian)...">
+                    <button type="submit" class="btn-teddy-dark px-4 py-2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                {% if search_query %}
+                    <div class="mt-2 text-secondary small">
+                        Showing puppies matching "<strong>{{ search_query }}</strong>" 
+                        &bull; <a href="{% url 'puppies' %}" class="text-dark fw-semibold">Clear filter</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. AVAILABLE PUPPIES GRID -->
+    <div class="row g-4 mb-5">
+        {% for puppy in puppies %}
+        <div class="col-md-6 col-lg-4">
+            <div class="puppy-card-teddy">
+                <div class="puppy-card-img-wrap">
+                    {% if puppy.image %}
+                        <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}">
+                    {% else %}
+                        <div class="d-flex align-items-center justify-content-center h-100 bg-light">
+                            <span class="fs-1">🐶</span>
+                        </div>
+                    {% endif %}
+                    <span class="badge-status-available">Available</span>
+                </div>
+
+                <div class="puppy-card-body-teddy">
+                    <h3 class="puppy-card-title">{{ puppy.name }}</h3>
+                    <p class="puppy-card-subtitle">{{ puppy.breed }} &bull; {{ puppy.gender }} &bull; {{ puppy.age }}</p>
+                    
+                    <div class="puppy-card-price">
+                        AED {{ puppy.price }}
+                    </div>
+
+                    <div class="d-flex gap-2 mt-auto">
+                        <a href="{% url 'puppy_details' puppy.id %}" class="btn-teddy-dark w-100 py-2">
+                            View details
+                        </a>
+                        <a href="{{ puppy.get_whatsapp_url }}" target="_blank" class="btn btn-outline-success px-3 rounded-pill" title="Enquire on WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <h4 class="fw-bold">No puppies found</h4>
+            <p class="text-secondary">We couldn't find any puppies matching your search.</p>
+            <a href="{% url 'puppies' %}" class="btn-teddy-outline">Show all available puppies</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 2. ALREADY GONE HOME SECTION (Exact match to reference site) -->
+    {% if gone_home_puppies %}
+    <div class="pt-5 border-top border-secondary-subtle">
+        <div class="text-center mb-5">
+            <span class="hero-tag">Happy Adoptions</span>
+            <h2 class="display-6 fw-bold">Already gone home</h2>
+            <p class="text-secondary">These adorable teacup puppies have already joined their forever families across the U.A.E.</p>
+        </div>
+
+        <div class="row g-4">
+            {% for gone in gone_home_puppies %}
+            <div class="col-md-6 col-lg-4">
+                <div class="puppy-card-teddy opacity-75">
+                    <div class="puppy-card-img-wrap">
+                        {% if gone.image %}
+                            <img src="{{ gone.image.url }}" alt="{{ gone.name }}">
+                        {% else %}
+                            <div class="d-flex align-items-center justify-content-center h-100 bg-light">
+                                <span class="fs-1">🐶</span>
+                            </div>
+                        {% endif %}
+                        <span class="badge-status-gone">Gone Home</span>
+                    </div>
+
+                    <div class="puppy-card-body-teddy">
+                        <h4 class="puppy-card-title">{{ gone.name }}</h4>
+                        <p class="puppy-card-subtitle">{{ gone.breed }} &bull; {{ gone.gender }}</p>
+                        <p class="text-secondary small mb-3">Adopted by a loving family in Dubai.</p>
+                        <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I%20love%20{{ gone.name }}%20the%20{{ gone.breed }}.%20Can%20you%20import%20a%20similar%20puppy%20for%20me%3F" 
+                           target="_blank" 
+                           class="btn-teddy-outline w-100 py-2">
+                            Request similar puppy &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

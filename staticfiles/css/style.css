@@ -1,0 +1,363 @@
+/* 
+=============================================================
+  TeddyPups U.A.E. - Premium Teacup Puppies in Dubai
+  Luxury Boutique Theme matching https://puppy.instabizweb.com/
+============================================================= */
+
+:root {
+    --bg-cream: #FDFBF7;
+    --bg-cream-alt: #F6F2EB;
+    --bg-card: #FFFFFF;
+    --text-primary: #1C1917;
+    --text-secondary: #78716C;
+    --brand-gold: #C5A880;
+    --brand-gold-hover: #A98558;
+    --brand-dark: #1C1917;
+    --whatsapp-green: #25D366;
+    --whatsapp-hover: #1EBE5D;
+    --border-subtle: #E7E0D6;
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+}
+
+/* Luxury Typography */
+h1, h2, h3, h4, h5 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.luxury-serif {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* =========================================
+   NAVIGATION BAR
+========================================= */
+.navbar-teddy {
+    background-color: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 0;
+}
+
+.brand-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+}
+
+.brand-badge {
+    font-size: 0.65rem;
+    background-color: var(--brand-gold);
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+}
+
+.nav-link-teddy {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 14px !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-link-teddy:hover {
+    color: var(--brand-gold-hover) !important;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn-teddy-dark {
+    background-color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-teddy-dark:hover {
+    background-color: #332F2C;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn-teddy-outline {
+    background-color: transparent;
+    border: 1.5px solid var(--text-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-teddy-outline:hover {
+    background-color: var(--text-primary);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-teddy {
+    background-color: var(--whatsapp-green);
+    border: 1px solid var(--whatsapp-green);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-whatsapp-teddy:hover {
+    background-color: var(--whatsapp-hover);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float-teddy {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--whatsapp-green);
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 32px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.whatsapp-float-teddy:hover {
+    background-color: var(--whatsapp-hover);
+    color: #FFFFFF;
+    transform: scale(1.08);
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero-teddy {
+    padding: 70px 0 50px;
+}
+
+.hero-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-gold-hover);
+    margin-bottom: 16px;
+}
+
+.hero-title-teddy {
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle-teddy {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 32px;
+}
+
+.hero-img-box {
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(28, 25, 23, 0.08);
+}
+
+.hero-img-box img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+/* =========================================
+   PUPPY CARDS (MEET THE PUPS)
+========================================= */
+.puppy-card-teddy {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.puppy-card-teddy:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(28, 25, 23, 0.08);
+}
+
+.puppy-card-img-wrap {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background-color: #EFE9DF;
+}
+
+.puppy-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.puppy-card-teddy:hover .puppy-card-img-wrap img {
+    transform: scale(1.04);
+}
+
+.badge-status-available {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #059669;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.badge-status-gone {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: rgba(41, 37, 36, 0.85);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.puppy-card-body-teddy {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.puppy-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.puppy-card-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.puppy-card-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+/* =========================================
+   TWO WAYS HOME / PROCESS CARDS
+========================================= */
+.feature-box-teddy {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 40px 32px;
+    height: 100%;
+}
+
+.feature-box-icon {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* =========================================
+   CALL TO ACTION & FOOTER
+========================================= */
+.cta-teddy {
+    background-color: var(--bg-cream-alt);
+    border-radius: 28px;
+    padding: 60px 40px;
+    margin: 60px 0;
+    border: 1px solid var(--border-subtle);
+}
+
+.footer-teddy {
+    background-color: #171513;
+    color: #D6D3D1;
+    padding: 70px 0 35px;
+    margin-top: auto;
+}
+
+.footer-teddy a {
+    color: #A8A29E;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-teddy a:hover {
+    color: #FFFFFF;
+}
+
+.footer-title {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}

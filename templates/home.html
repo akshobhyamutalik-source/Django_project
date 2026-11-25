@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}TeddyPups U.A.E. — Premium teacup puppies in Dubai{% endblock %}
+
+{% block content %}
+<main>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-teddy container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="hero-tag">Dubai's Premier Teacup Puppy Boutique</span>
+                <h1 class="hero-title-teddy">
+                    Premium teacup<br>puppies in Dubai
+                </h1>
+                <p class="hero-subtitle-teddy">
+                    Healthy, socialized, and vet-certified teacup companions ready to meet you in our Downtown Dubai showroom or hand-delivered to your doorstep across the U.A.E.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'puppies' %}" class="btn-teddy-dark">
+                        View available puppies
+                    </a>
+                    <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I'd%20like%20to%20enquire%20about%20available%20puppies." 
+                       target="_blank" 
+                       class="btn-whatsapp-teddy">
+                        <i class="bi bi-whatsapp me-2"></i> Enquire on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Trust stats -->
+                <div class="row mt-5 pt-4 border-top border-secondary-subtle">
+                    <div class="col-4">
+                        <h4 class="fw-bold mb-0">100%</h4>
+                        <small class="text-secondary">Health Certified</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="fw-bold mb-0">Dubai</h4>
+                        <small class="text-secondary">Private Showroom</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="fw-bold mb-0">Same Day</h4>
+                        <small class="text-secondary">UAE Delivery</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hero-img-box">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Premium Teacup Puppy Dubai">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. MEET THE PUPS (FEATURED AVAILABLE PUPPIES) -->
+    <section class="container my-5 py-4">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <span class="hero-tag mb-1">Our Collection</span>
+                <h2 class="display-6 fw-bold mb-1">Meet the pups</h2>
+                <p class="text-secondary mb-0">Handpicked teacup companions ready to meet you in Dubai.</p>
+            </div>
+            <a href="{% url 'puppies' %}" class="btn-teddy-outline d-none d-md-inline-flex">
+                See all available puppies &rarr;
+            </a>
+        </div>
+
+        <div class="row g-4">
+            {% for puppy in puppies %}
+            <div class="col-md-6 col-lg-4">
+                <div class="puppy-card-teddy">
+                    <div class="puppy-card-img-wrap">
+                        {% if puppy.image %}
+                            <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}">
+                        {% else %}
+                            <div class="d-flex align-items-center justify-content-center h-100 bg-light">
+                                <span class="fs-1">🐶</span>
+                            </div>
+                        {% endif %}
+                        <span class="badge-status-available">Available</span>
+                    </div>
+
+                    <div class="puppy-card-body-teddy">
+                        <h3 class="puppy-card-title">{{ puppy.name }}</h3>
+                        <p class="puppy-card-subtitle">{{ puppy.breed }} &bull; {{ puppy.gender }} &bull; {{ puppy.age }}</p>
+                        
+                        <div class="puppy-card-price">
+                            AED {{ puppy.price }}
+                        </div>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <a href="{% url 'puppy_details' puppy.id %}" class="btn-teddy-dark w-100 py-2">
+                                View details
+                            </a>
+                            <a href="{{ puppy.get_whatsapp_url }}" target="_blank" class="btn btn-outline-success px-3 rounded-pill" title="Chat on WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-secondary">No puppies currently listed. Please contact us on WhatsApp!</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4 d-md-none">
+            <a href="{% url 'puppies' %}" class="btn-teddy-outline w-100">
+                See all available puppies &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. TWO WAYS TO MEET YOUR PUPPY -->
+    <section class="container my-5 py-4">
+        <div class="text-center mb-5">
+            <span class="hero-tag">How It Works</span>
+            <h2 class="display-6 fw-bold">Two ways to meet your puppy</h2>
+            <p class="text-secondary">Whether you want to hold your puppy today or import a bespoke pedigree companion.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="feature-box-teddy">
+                    <div class="feature-box-icon">🏛️</div>
+                    <h3 class="fw-bold mb-3">Puppies in Dubai</h3>
+                    <p class="text-secondary mb-4 leading-relaxed">
+                        Visit our private showroom in Downtown Dubai. Meet the puppies in person, spend time holding and bonding with them, and take your puppy home the very same day.
+                    </p>
+                    <a href="{% url 'puppies' %}" class="btn-teddy-outline">
+                        View puppies in Dubai &rarr;
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-box-teddy">
+                    <div class="feature-box-icon">✈️</div>
+                    <h3 class="fw-bold mb-3">Imported for you</h3>
+                    <p class="text-secondary mb-4 leading-relaxed">
+                        Looking for a specific teacup size, rare coat color, or micro pedigree? We source directly from world-class certified breeders in South Korea and Europe with complete health documentation.
+                    </p>
+                    <a href="{% url 'how_it_works' %}" class="btn-teddy-outline">
+                        Learn how import works &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. YOUR PUPPY JOURNEY (3 STEPS) -->
+    <section class="container my-5 py-4">
+        <div class="text-center mb-5">
+            <span class="hero-tag">Simple & Safe</span>
+            <h2 class="display-6 fw-bold">Your puppy journey</h2>
+            <p class="text-secondary">Bringing home your dream teacup puppy is seamless and transparent.</p>
+        </div>
+
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded-4 border border-secondary-subtle h-100">
+                    <div class="display-6 fw-bold mb-3" style="color: #C5A880;">01</div>
+                    <h4 class="fw-bold mb-2">Choose your breed</h4>
+                    <p class="text-secondary small mb-0">Browse our available teacup puppies or request a custom import from certified breeders.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded-4 border border-secondary-subtle h-100">
+                    <div class="display-6 fw-bold mb-3" style="color: #C5A880;">02</div>
+                    <h4 class="fw-bold mb-2">Get photos & details</h4>
+                    <p class="text-secondary small mb-0">Receive high-definition video walkthroughs, veterinary records, weight metrics, and health passports.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded-4 border border-secondary-subtle h-100">
+                    <div class="display-6 fw-bold mb-3" style="color: #C5A880;">03</div>
+                    <h4 class="fw-bold mb-2">Secure & safe delivery</h4>
+                    <p class="text-secondary small mb-0">Collect in person at our Downtown Dubai showroom or enjoy white-glove climate-controlled delivery anywhere in the UAE.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHY FAMILIES TRUST TEDDYPUPS -->
+    <section class="container my-5 py-4">
+        <div class="p-5 rounded-4" style="background-color: #F6F2EB; border: 1px solid #E7E0D6;">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5">
+                    <span class="hero-tag">Unmatched Standards</span>
+                    <h2 class="display-6 fw-bold mb-3">Why families trust TeddyPups</h2>
+                    <p class="text-secondary mb-4 leading-relaxed">
+                        We are passionate about connecting caring homes with ethically raised, healthy teacup puppies. Every puppy undergoes rigorous veterinary examinations.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn-teddy-dark">Schedule a showroom visit</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="bg-white p-4 rounded-3 h-100">
+                                <h5 class="fw-bold mb-2">🩺 Vet-Checked & Vaccinated</h5>
+                                <p class="text-secondary small mb-0">Full international vaccination booklet, microchip, and health passport included.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-white p-4 rounded-3 h-100">
+                                <h5 class="fw-bold mb-2">🏡 Raised with Love</h5>
+                                <p class="text-secondary small mb-0">Socialized in calm, clean home environments so they adapt gently to your family.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-white p-4 rounded-3 h-100">
+                                <h5 class="fw-bold mb-2">🛡️ Genetic Health Guarantee</h5>
+                                <p class="text-secondary small mb-0">Every puppy is backed by our comprehensive official health coverage agreement.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-white p-4 rounded-3 h-100">
+                                <h5 class="fw-bold mb-2">🚗 White-Glove UAE Delivery</h5>
+                                <p class="text-secondary small mb-0">Delivered directly to your door in Dubai, Abu Dhabi, or Sharjah in climate-controlled transport.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CALL TO ACTION BANNER -->
+    <section class="container">
+        <div class="cta-teddy text-center">
+            <span class="hero-tag mb-2">Get Started</span>
+            <h2 class="display-6 fw-bold mb-3">Ready to meet your new best friend?</h2>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 580px;">
+                Chat with our puppy specialists directly on WhatsApp or visit our Downtown Dubai showroom to hold your future companion today.
+            </p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I'd%20like%20to%20discuss%20a%20puppy." 
+                   target="_blank" 
+                   class="btn-whatsapp-teddy">
+                    <i class="bi bi-whatsapp me-2"></i> Chat on WhatsApp
+                </a>
+                <a href="{% url 'puppies' %}" class="btn-teddy-outline">
+                    View available puppies
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
