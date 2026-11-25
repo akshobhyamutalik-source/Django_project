@@ -10,7 +10,7 @@ class Puppy(models.Model):
     ]
 
     # Name of the puppy (e.g. "Max", "Chloe", "Coco")
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100) 
 
     # Breed (e.g. "Teacup Maltipoo", "Korean Teacup Poodle", "Toy Poodle")
     breed = models.CharField(max_length=100)

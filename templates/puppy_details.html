@@ -1,173 +1,124 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ puppy.name }} ({{ puppy.breed }}) | TeddyPups U.A.E.{% endblock %}
+{% block title %}{{ puppy.name }} — {{ puppy.breed }} | TeddyPups U.A.E.{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb small">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-secondary text-decoration-none">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'puppies' %}" class="text-secondary text-decoration-none">Available puppies</a></li>
-            <li class="breadcrumb-item active fw-bold text-dark" aria-current="page">{{ puppy.name }}</li>
-        </ol>
+<main id="main" tabindex="-1" class="relative pt-[calc(var(--header-h)+2rem)] pb-24 outline-none">
+  <div class="gutter mx-auto max-w-[110rem]">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="mb-8 flex items-center gap-2 text-sm text-cocoa/70">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/puppies/" class="hover:underline">Puppies</a>
+      <span>/</span>
+      <span class="font-semibold text-cocoa">{{ puppy.name }}</span>
     </nav>
 
-    <!-- Main Puppy View -->
-    <div class="row g-5">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      
+      <!-- Left Column: High-Res Puppy Image Card with Luxury Frame -->
+      <div class="lg:col-span-6">
+        <div class="relative overflow-hidden rounded-[2.5rem] border-[3px] border-cocoa bg-honey-soft p-4 shadow-[0_12px_0_0_#2a170e]">
+          <div class="relative aspect-square w-full overflow-hidden rounded-[2rem] border-2 border-cocoa bg-milk">
+            {% if puppy.image %}
+              <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}" class="h-full w-full object-cover">
+            {% else %}
+              <img src="https://puppy.instabizweb.com/_next/image?url=%2Fmedia%2FZ0ToauDx7Eve%2F5fffe4d022%2Fb942a5_4b8cfb8204d24eadaf524332aba1dc15-mv2.webp&w=1200&q=75" 
+                   alt="{{ puppy.name }}" class="h-full w-full object-cover">
+            {% endif %}
 
-        <!-- Left Column: Photo & Package Guarantee -->
-        <div class="col-lg-6">
-            <div class="rounded-4 overflow-hidden shadow-sm border border-secondary-subtle mb-4" style="background-color: #EFE9DF;">
-                {% if puppy.image %}
-                    <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
-                {% else %}
-                    <div class="d-flex align-items-center justify-content-center bg-light" style="height: 400px;">
-                        <span class="display-1">🐶</span>
-                    </div>
-                {% endif %}
+            <!-- Floating Video & Availability Badges -->
+            <div class="absolute top-4 left-4 flex gap-2">
+              {% if puppy.is_available %}
+                <span class="rounded-full border-2 border-cocoa bg-[#dcfce7] px-3.5 py-1 text-xs font-bold text-[#166534]">
+                  ● Available in Dubai
+                </span>
+              {% else %}
+                <span class="rounded-full border-2 border-cocoa bg-[#fee2e2] px-3.5 py-1 text-xs font-bold text-[#991b1b]">
+                  Gone Home
+                </span>
+              {% endif %}
+              <span class="rounded-full border-2 border-cocoa bg-milk px-3.5 py-1 text-xs font-bold text-cocoa">
+                📹 Video Available
+              </span>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- Health Guarantee Checklist -->
-            <div class="p-4 bg-white rounded-4 border border-secondary-subtle shadow-sm">
-                <h5 class="fw-bold mb-3 d-flex align-items-center">
-                    <span class="text-success me-2 fs-5"><i class="bi bi-shield-check"></i></span>
-                    Included with {{ puppy.name }}
-                </h5>
-                <div class="row g-3 small text-secondary">
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> Official UAE Vet Health Passport
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> ISO Certified Microchip
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> Core Vaccinations Complete
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> Comprehensive Deworming
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> Contractual Health Guarantee
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i> Premium Royal Canin Starter Pack
-                    </div>
-                </div>
-            </div>
+      <!-- Right Column: Puppy Details, Price & Direct Action Buttons -->
+      <div class="flex flex-col justify-center lg:col-span-6">
+        
+        <p class="font-scrawl text-lg text-cocoa-soft">Meet our teacup companion</p>
+        <h1 class="font-plush mt-1 text-4xl text-cocoa md:text-5xl">{{ puppy.name }}</h1>
+        <p class="mt-2 text-xl font-medium text-cocoa/80">{{ puppy.breed }}</p>
+
+        <!-- Attribute Pill Tags -->
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          <span class="rounded-full border-2 border-cocoa bg-milk px-4 py-1.5 text-sm font-semibold">
+            Gender: {{ puppy.gender }}
+          </span>
+          <span class="rounded-full border-2 border-cocoa bg-milk px-4 py-1.5 text-sm font-semibold">
+            Age: {{ puppy.age }}
+          </span>
+          <span class="rounded-full border-2 border-cocoa bg-milk px-4 py-1.5 text-sm font-semibold">
+            Origin: Downtown Dubai
+          </span>
+          {% if puppy.is_vaccinated %}
+            <span class="rounded-full border-2 border-cocoa bg-[#fef9c3] px-4 py-1.5 text-sm font-semibold text-[#854d0e]">
+              ✓ Fully Vaccinated & Vet Certified
+            </span>
+          {% endif %}
         </div>
 
-        <!-- Right Column: Puppy Details & Direct Actions -->
-        <div class="col-lg-6">
-
-            <!-- Status & Price -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                {% if puppy.is_available %}
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill fw-bold">
-                        <i class="bi bi-patch-check-fill me-1"></i> Available in Dubai
-                    </span>
-                {% else %}
-                    <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill fw-bold">
-                        Already Gone Home
-                    </span>
-                {% endif %}
-                <span class="fs-2 fw-bold text-dark">AED {{ puppy.price }}</span>
-            </div>
-
-            <h1 class="display-5 fw-bold mb-1">{{ puppy.name }}</h1>
-            <p class="fs-5 text-secondary mb-4">{{ puppy.breed }}</p>
-
-            <!-- Specification Highlights -->
-            <div class="row g-3 mb-4">
-                <div class="col-4">
-                    <div class="p-3 bg-white rounded-3 shadow-sm border border-secondary-subtle text-center">
-                        <small class="text-secondary d-block">Age</small>
-                        <strong class="fs-6">{{ puppy.age }}</strong>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-white rounded-3 shadow-sm border border-secondary-subtle text-center">
-                        <small class="text-secondary d-block">Gender</small>
-                        <strong class="fs-6">{{ puppy.gender }}</strong>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-white rounded-3 shadow-sm border border-secondary-subtle text-center">
-                        <small class="text-secondary d-block">Health</small>
-                        <strong class="fs-6 text-success">Vet Certified</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bio / Temperament -->
-            <div class="p-4 bg-white rounded-4 border border-secondary-subtle shadow-sm mb-4">
-                <h5 class="fw-bold mb-3">About {{ puppy.name }}</h5>
-                <p class="text-secondary leading-relaxed mb-0">
-                    {{ puppy.description }}
-                </p>
-            </div>
-
-            <!-- Call to Actions -->
-            <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
-                <a href="{{ puppy.get_whatsapp_url }}" target="_blank" class="btn-whatsapp-teddy flex-grow-1 text-center py-3">
-                    <i class="bi bi-whatsapp me-2"></i> Enquire on WhatsApp
-                </a>
-                <a href="{% url 'contact' %}?puppy_id={{ puppy.id }}" class="btn-teddy-dark text-center py-3">
-                    Schedule viewing &rarr;
-                </a>
-            </div>
-
-            <div class="p-3 rounded-3 d-flex align-items-center" style="background-color: #F6F2EB;">
-                <span class="fs-4 me-3 text-warning"><i class="bi bi-geo-alt-fill"></i></span>
-                <small class="text-secondary">
-                    Available for viewing today at our Downtown Dubai showroom. Same-day collection or home delivery available across the U.A.E.
-                </small>
-            </div>
-
+        <!-- Pricing Section -->
+        <div class="mt-8 rounded-2xl border-2 border-cocoa bg-honey-soft/50 p-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-cocoa/70">Adoption Investment</p>
+          {% if puppy.is_available %}
+            <p class="font-plush mt-1 text-3xl font-bold text-cocoa">{{ puppy.price }} AED</p>
+            <p class="mt-1 text-xs text-cocoa/70">Includes Microchip, International Health Passport & Deworming Certificate</p>
+          {% else %}
+            <p class="font-plush mt-1 text-3xl font-bold text-[#991b1b]">Already Gone Home</p>
+            <p class="mt-1 text-xs text-cocoa/70">This puppy was adopted. You can reserve a puppy from the next upcoming litter!</p>
+          {% endif %}
         </div>
+
+        <!-- Description -->
+        <div class="mt-6 text-cocoa/90 leading-relaxed">
+          <p>{{ puppy.description }}</p>
+        </div>
+
+        <!-- Direct WhatsApp Call to Action -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="{{ puppy.get_whatsapp_url }}" target="_blank" rel="noopener noreferrer"
+             class="btn btn-whatsapp inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold shadow-md transition hover:-translate-y-0.5">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current" aria-hidden="true">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Ask about {{ puppy.name }} on WhatsApp
+          </a>
+
+          <a href="/contact/?puppy_id={{ puppy.id }}"
+             class="inline-flex items-center justify-center rounded-full border-2 border-cocoa bg-milk px-6 py-4 text-base font-bold text-cocoa transition hover:bg-honey">
+            Send Showroom Enquiry
+          </a>
+        </div>
+
+        <!-- Premium Guarantee Checklist -->
+        <div class="mt-10 border-t-2 border-cocoa/20 pt-6">
+          <p class="font-plush text-lg text-cocoa">Every Teddy Pup comes with:</p>
+          <ul class="mt-3 space-y-2 text-sm text-cocoa/80">
+            <li class="flex items-center gap-2"><span>🐾</span> Microchipped and international health passport</li>
+            <li class="flex items-center gap-2"><span>🐾</span> Deworming and age-appropriate vaccinations certified by licensed vets</li>
+            <li class="flex items-center gap-2"><span>🐾</span> Personal showroom visit or doorstep delivery across Dubai</li>
+            <li class="flex items-center gap-2"><span>🐾</span> Lifetime customer support & puppy care consultation</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
-
-    <!-- Recommendations -->
-    {% if other_puppies %}
-    <div class="mt-5 pt-5 border-top border-secondary-subtle">
-        <div class="d-flex justify-content-between align-items-end mb-4">
-            <div>
-                <span class="hero-tag mb-1">More Puppies</span>
-                <h3 class="fw-bold mb-0">Other puppies you might love</h3>
-            </div>
-            <a href="{% url 'puppies' %}" class="btn-teddy-outline d-none d-md-inline-flex">View all &rarr;</a>
-        </div>
-
-        <div class="row g-4">
-            {% for other in other_puppies %}
-            <div class="col-md-4">
-                <div class="puppy-card-teddy">
-                    <div class="puppy-card-img-wrap" style="height: 220px;">
-                        {% if other.image %}
-                            <img src="{{ other.image.url }}" alt="{{ other.name }}">
-                        {% else %}
-                            <div class="d-flex align-items-center justify-content-center h-100 bg-light">
-                                <span class="fs-2">🐶</span>
-                            </div>
-                        {% endif %}
-                        <span class="badge-status-available">Available</span>
-                    </div>
-                    <div class="puppy-card-body-teddy p-3">
-                        <h5 class="puppy-card-title mb-1">{{ other.name }}</h5>
-                        <p class="puppy-card-subtitle small mb-2">{{ other.breed }} &bull; {{ other.gender }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">AED {{ other.price }}</span>
-                            <a href="{% url 'puppy_details' other.id %}" class="btn-teddy-dark py-1 px-3 small">View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-</div>
+  </div>
+</main>
 {% endblock %}

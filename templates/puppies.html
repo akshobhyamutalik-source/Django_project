@@ -1,126 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Available puppies | TeddyPups U.A.E.{% endblock %}
+{% block title %}Available Puppies in Dubai | TeddyPups U.A.E.{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-
-    <!-- Header & Search -->
-    <div class="text-center mb-5">
-        <span class="hero-tag">In Dubai & Ready For Homes</span>
-        <h1 class="display-5 fw-bold mb-3">Available puppies</h1>
-        <p class="text-secondary mx-auto" style="max-width: 600px;">
-            Every puppy is vet-checked, microchipped, fully vaccinated, and ready to meet you in Downtown Dubai.
-        </p>
-
-        <!-- Search Bar -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-7 col-lg-5">
-                <form method="GET" action="{% url 'puppies' %}" class="d-flex rounded-pill p-1 bg-white border border-secondary-subtle shadow-sm">
-                    <input type="text" 
-                           name="search" 
-                           value="{{ search_query|default:'' }}" 
-                           class="form-control border-0 rounded-pill ps-4" 
-                           placeholder="Search by breed (Maltipoo, Poodle, Pomeranian)...">
-                    <button type="submit" class="btn-teddy-dark px-4 py-2">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
-                {% if search_query %}
-                    <div class="mt-2 text-secondary small">
-                        Showing puppies matching "<strong>{{ search_query }}</strong>" 
-                        &bull; <a href="{% url 'puppies' %}" class="text-dark fw-semibold">Clear filter</a>
-                    </div>
+<main id="main" tabindex="-1" class="relative pt-[var(--header-h)] outline-none">
+<div data-page="pups" class="tp-page"><section aria-labelledby="pups-title" class="tp-sketchbook"><div class="gutter mx-auto max-w-[110rem] pb-24 pt-10 md:pt-16"><div class="tp-sketchbook__head"><div class="tp-sketchbook__words"><p class="font-scrawl text-lg text-toffee-ink" data-reveal="true">from Teddy&#x27;s sketchbook</p><h1 id="pups-title" class="font-plush text-giant tp-sketchbook__title" data-reveal="true">Available puppies<svg aria-hidden="true" viewBox="0 0 400 24" preserveAspectRatio="none" class="tp-sketchbook__underline"><path d="M4 15c40-9 70 5 112-2s70-9 112 0 74 8 116-1 38-4 52 1" pathLength="1"></path></svg></h1><p class="tp-sketchbook__lede text-lede mt-6 max-w-[46ch] text-cocoa-soft" data-reveal="true">Every listing shows real photos of the actual puppy. Open a profile to see them all, then ask us about them on WhatsApp.</p></div><div class="tp-sketchbook__self" data-reveal="true"><div class="pup-buddy " data-facing="left"><svg viewBox="0 0 300 240" style="overflow:visible" role="img" aria-label="Teddy, the TeddyPups puppy" focusable="false"><g data-p="root" transform="translate(300 0) scale(-1 1)"><ellipse data-p="shadow" cx="150" cy="230" rx="92" ry="7" fill="#2a170e" opacity="0.12" transform="translate(0 0) scale(1 1)" style="transform-box:fill-box;transform-origin:center"></ellipse><g data-p="body" transform="translate(0 -2) rotate(-24 196 206) translate(196 0) scale(1 1) translate(-196 0)" opacity="1"><g data-p="bf" transform="translate(94 192) rotate(0)" opacity="0"><path d="M-14 -14 C-14 4 -12 18 -12 27 C-12 34 -7 36 0 36 C9 36 13 33 13 27 C13 18 14 4 14 -14Z" fill="#e4a352"></path><path d="M-14 -14 C-14 4 -12 18 -12 27 C-12 34 -7 36 0 36 C9 36 13 33 13 27 C13 18 14 4 14 -14" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path d="M-3.5 29 v5 M4.5 29 v5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g><g data-p="ff" transform="translate(168 192) rotate(24)"><path d="M-11 -14 C-11 4 -12 18 -12 27 C-12 34 -7 36 0 36 C9 36 13 33 13 27 C13 18 11 4 11 -14Z" fill="#e4a352"></path><path d="M-11 -14 C-11 4 -12 18 -12 27 C-12 34 -7 36 0 36 C9 36 13 33 13 27 C13 18 11 4 11 -14" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path d="M-3.5 29 v5 M4.5 29 v5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g><g data-p="tail" transform="rotate(34 84 150)"><path d="M86 152 C80 146 76 140 74 136" stroke="#2a170e" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path d="M86 152 C80 146 76 140 74 136" stroke="#f2be6b" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M70.0 110.0Q78.1 105.0 80.9 113.7Q90.5 114.8 86.7 123.2Q93.4 129.9 84.7 134.0Q85.2 143.1 75.8 141.0Q70.0 148.3 64.2 141.0Q54.8 143.1 55.3 134.0Q46.6 129.9 53.3 123.2Q49.5 114.8 59.1 113.7Q61.9 105.0 70.0 110.0Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path></g><g data-p="bn" transform="translate(110 194) rotate(0)" opacity="0"><path d="M-15 -14 C-15 4 -12 16 -12 25 C-12 32 -7 34 0 34 C9 34 13 31 13 25 C13 16 15 4 15 -14Z" fill="#f2be6b"></path><path d="M-15 -14 C-15 4 -12 16 -12 25 C-12 32 -7 34 0 34 C9 34 13 31 13 25 C13 16 15 4 15 -14" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path d="M-3.5 27 v5 M4.5 27 v5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g><path d="M76.8 175.6Q69.0 167.9 78.2 160.7Q76.6 151.8 90.3 147.3Q95.2 138.9 110.9 137.9Q121.6 131.3 136.7 134.0Q151.1 130.5 162.9 136.4Q178.7 136.4 185.3 144.5Q199.7 148.2 199.7 157.1Q210.3 163.7 203.9 171.9Q208.7 180.4 197.0 186.3Q195.3 195.2 180.3 198.0Q172.3 205.7 156.6 204.8Q143.7 210.0 130.0 205.6Q114.5 207.4 105.1 200.2Q89.7 198.3 86.3 189.6Q73.6 184.3 76.8 175.6Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><path d="M182.7 196.4Q169.4 196.9 166.6 183.0Q156.1 174.1 162.3 161.5Q159.6 147.6 171.9 142.2Q178.2 129.7 191.0 134.0Q203.3 128.7 210.5 140.8Q223.1 145.2 221.3 159.3Q228.4 171.5 218.5 181.0Q216.6 195.1 203.2 195.7Q193.3 205.1 182.7 196.4Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><g data-p="fn" transform="translate(186 194) rotate(24)"><path d="M-12 -14 C-12 4 -12 16 -12 25 C-12 32 -7 34 0 34 C9 34 13 31 13 25 C13 16 12 4 12 -14Z" fill="#f2be6b"></path><path d="M-12 -14 C-12 4 -12 16 -12 25 C-12 32 -7 34 0 34 C9 34 13 31 13 25 C13 16 12 4 12 -14" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path d="M-3.5 27 v5 M4.5 27 v5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g></g><g data-p="haunch" opacity="1" transform="translate(0 1.44)"><path d="M80.0 204.0Q75.1 194.9 85.7 189.9Q88.4 180.2 100.7 181.2Q110.0 174.6 119.3 181.2Q131.6 180.2 134.3 189.9Q144.9 194.9 140.0 204.0Q144.9 213.1 134.3 218.1Q131.6 227.8 119.3 226.8Q110.0 233.4 100.7 226.8Q88.4 227.8 85.7 218.1Q75.1 213.1 80.0 204.0Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><path d="M112 214 C126 212 142 214 146 221 C148 226 144 229 136 229 L116 229 C108 229 104 224 106 219 Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><path d="M132 222v5M139 222v5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g><g data-p="head" transform="translate(-10 -6) rotate(0 212 100)"><path d="M178 146 Q212 162 246 146 L246 154 Q212 170 178 154 Z" fill="#a24a1a" stroke="#2a170e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M212 160 C212 156 206 155 206 159.4 C206 163 212 166.6 212 168.4 C212 166.6 218 163 218 159.4 C218 155 212 156 212 160 Z" fill="#fbe3b4" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><path data-p="earL" d="M177.1 78.7Q186.9 70.8 186.6 87.4Q196.0 89.9 189.9 105.5Q195.2 117.3 185.5 126.0Q184.7 142.8 175.2 141.2Q168.7 156.5 162.9 145.3Q153.1 153.2 153.4 136.6Q144.0 134.1 150.1 118.5Q144.8 106.7 154.5 98.0Q155.3 81.2 164.8 82.8Q171.3 67.5 177.1 78.7Z" fill="#e4a352" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" transform="rotate(0 174 82)"></path><path data-p="earR" d="M246.9 78.7Q252.7 67.5 259.2 82.8Q268.7 81.2 269.5 98.0Q279.2 106.7 273.9 118.5Q280.0 134.1 270.6 136.6Q270.9 153.2 261.1 145.3Q255.3 156.5 248.8 141.2Q239.3 142.8 238.5 126.0Q228.8 117.3 234.1 105.5Q228.0 89.9 237.4 87.4Q237.1 70.8 246.9 78.7Z" fill="#e4a352" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" transform="rotate(0 250 82)"></path><path d="M212.0 54.0Q223.4 48.2 231.5 57.5Q244.5 56.1 248.1 67.5Q260.7 70.7 259.1 82.4Q269.4 89.7 263.0 100.0Q269.4 110.3 259.1 117.6Q260.7 129.3 248.1 132.5Q244.5 143.9 231.5 142.5Q223.4 151.8 212.0 146.0Q200.6 151.8 192.5 142.5Q179.5 143.9 175.9 132.5Q163.3 129.3 164.9 117.6Q154.6 110.3 161.0 100.0Q154.6 89.7 164.9 82.4Q163.3 70.7 175.9 67.5Q179.5 56.1 192.5 57.5Q200.6 48.2 212.0 54.0Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><path d="M195.0 52.0Q190.7 45.8 200.0 43.5Q203.2 36.9 212.0 40.0Q220.8 36.9 224.0 43.5Q233.3 45.8 229.0 52.0Q233.3 58.2 224.0 60.5Q220.8 67.1 212.0 64.0Q203.2 67.1 200.0 60.5Q190.7 58.2 195.0 52.0Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path><path d="M188 120 C188 106 200 100 212 100 C224 100 236 106 236 120 C236 133 225 140 212 140 C199 140 188 133 188 120 Z" fill="#fbe3b4"></path><circle cx="181" cy="116" r="7" fill="#f9b9a6" opacity="0.85"></circle><circle cx="243" cy="116" r="7" fill="#f9b9a6" opacity="0.85"></circle><g data-p="eyes" transform="translate(0 0)"><g data-p="open" opacity="1"><g data-p="blink" transform="translate(0 0) scale(1 1)"><ellipse cx="194" cy="98" rx="7.4" ry="8.6" fill="#2a170e"></ellipse><ellipse cx="230" cy="98" rx="7.4" ry="8.6" fill="#2a170e"></ellipse><circle cx="196.6" cy="94.6" r="2.7" fill="#fff"></circle><circle cx="232.6" cy="94.6" r="2.7" fill="#fff"></circle><circle cx="192" cy="101.2" r="1.2" fill="#fff"></circle><circle cx="228" cy="101.2" r="1.2" fill="#fff"></circle></g></g></g><path data-p="happy" d="M186.5 101 Q194 91.5 201.5 101 M222.5 101 Q230 91.5 237.5 101" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0"></path><path data-p="shut" d="M186.5 97 Q194 103.5 201.5 97 M222.5 97 Q230 103.5 237.5 97" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0"></path><path d="M204.5 111.5 Q212 107.2 219.5 111.5 Q218.2 118.4 212 120 Q205.8 118.4 204.5 111.5 Z" fill="#2a170e"></path><path d="M212 120 V124.5 M212 124.5 Q207.2 129.6 202.8 125.2 M212 124.5 Q216.8 129.6 221.2 125.2" stroke="#2a170e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"></path><path data-p="tongue" d="M207.6 127.4 Q212 136.6 216.4 127.4 Z" fill="#e98c8c" stroke="#2a170e" stroke-width="2.2" stroke-linejoin="round" opacity="1"></path><g data-p="mouth" opacity="0"><path d="M203 126 Q212 122 221 126 Q219 138 212 139 Q205 138 203 126 Z" fill="#6b2a1c" stroke="#2a170e" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></path><path d="M206.5 133.5 Q212 130 217.5 133.5 Q215 138 212 138 Q209 138 206.5 133.5 Z" fill="#e98c8c"></path></g></g><g data-p="ledge" opacity="0"><path d="M175 159 C175 148 181 142 190 142 C199 142 205 148 205 159 Z M219 159 C219 148 225 142 234 142 C243 142 249 148 249 159 Z" fill="#f2be6b" stroke="#2a170e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path><path d="M186 153 v-4.5 M194 153 v-4.5 M230 153 v-4.5 M238 153 v-4.5" stroke="#2a170e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"></path></g></g></svg><span aria-hidden="true" class="pup-bubble" data-show="false"></span></div><span class="font-scrawl tp-sketchbook__caption">self-portrait</span></div></div><div class="mt-12"><template id="B:0"></template><ul class="tp-sketches mt-20">
+      {% for puppy in puppies %}
+        <li>
+          <a class="tp-sketch" data-reveal="true" style="--tilt:0.36deg;--d:0ms;--wash:#f2be6b" aria-label="{{ puppy.name }}, {{ puppy.breed }}, {{ puppy.gender }}, {{ puppy.age }}, available" href="/puppies/{{ puppy.id }}/">
+            <span class="tp-sketch__frame">
+              <span class="tp-sketch__photo">
+                {% if puppy.image %}
+                  <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}" class="h-full w-full object-cover">
+                {% else %}
+                  <img src="https://puppy.instabizweb.com/_next/image?url=%2Fmedia%2FZ0ToauDx7Eve%2F5fffe4d022%2Fb942a5_4b8cfb8204d24eadaf524332aba1dc15-mv2.webp&w=1200&q=75" alt="{{ puppy.name }}" class="h-full w-full object-cover">
                 {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <!-- 1. AVAILABLE PUPPIES GRID -->
-    <div class="row g-4 mb-5">
-        {% for puppy in puppies %}
-        <div class="col-md-6 col-lg-4">
-            <div class="puppy-card-teddy">
-                <div class="puppy-card-img-wrap">
-                    {% if puppy.image %}
-                        <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}">
-                    {% else %}
-                        <div class="d-flex align-items-center justify-content-center h-100 bg-light">
-                            <span class="fs-1">🐶</span>
-                        </div>
-                    {% endif %}
-                    <span class="badge-status-available">Available</span>
-                </div>
-
-                <div class="puppy-card-body-teddy">
-                    <h3 class="puppy-card-title">{{ puppy.name }}</h3>
-                    <p class="puppy-card-subtitle">{{ puppy.breed }} &bull; {{ puppy.gender }} &bull; {{ puppy.age }}</p>
-                    
-                    <div class="puppy-card-price">
-                        AED {{ puppy.price }}
-                    </div>
-
-                    <div class="d-flex gap-2 mt-auto">
-                        <a href="{% url 'puppy_details' puppy.id %}" class="btn-teddy-dark w-100 py-2">
-                            View details
-                        </a>
-                        <a href="{{ puppy.get_whatsapp_url }}" target="_blank" class="btn btn-outline-success px-3 rounded-pill" title="Enquire on WhatsApp">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <div class="col-12 text-center py-5">
-            <h4 class="fw-bold">No puppies found</h4>
-            <p class="text-secondary">We couldn't find any puppies matching your search.</p>
-            <a href="{% url 'puppies' %}" class="btn-teddy-outline">Show all available puppies</a>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- 2. ALREADY GONE HOME SECTION (Exact match to reference site) -->
-    {% if gone_home_puppies %}
-    <div class="pt-5 border-top border-secondary-subtle">
-        <div class="text-center mb-5">
-            <span class="hero-tag">Happy Adoptions</span>
-            <h2 class="display-6 fw-bold">Already gone home</h2>
-            <p class="text-secondary">These adorable teacup puppies have already joined their forever families across the U.A.E.</p>
-        </div>
-
-        <div class="row g-4">
-            {% for gone in gone_home_puppies %}
-            <div class="col-md-6 col-lg-4">
-                <div class="puppy-card-teddy opacity-75">
-                    <div class="puppy-card-img-wrap">
-                        {% if gone.image %}
-                            <img src="{{ gone.image.url }}" alt="{{ gone.name }}">
-                        {% else %}
-                            <div class="d-flex align-items-center justify-content-center h-100 bg-light">
-                                <span class="fs-1">🐶</span>
-                            </div>
-                        {% endif %}
-                        <span class="badge-status-gone">Gone Home</span>
-                    </div>
-
-                    <div class="puppy-card-body-teddy">
-                        <h4 class="puppy-card-title">{{ gone.name }}</h4>
-                        <p class="puppy-card-subtitle">{{ gone.breed }} &bull; {{ gone.gender }}</p>
-                        <p class="text-secondary small mb-3">Adopted by a loving family in Dubai.</p>
-                        <a href="https://wa.me/919898124987?text=Hi%20TeddyPups%2C%20I%20love%20{{ gone.name }}%20the%20{{ gone.breed }}.%20Can%20you%20import%20a%20similar%20puppy%20for%20me%3F" 
-                           target="_blank" 
-                           class="btn-teddy-outline w-100 py-2">
-                            Request similar puppy &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-</div>
+              </span>
+              <span class="tp-sketch__sticker font-scrawl">Available</span>
+              <span class="tp-sketch__video">▶ video</span>
+            </span>
+            <span class="tp-sketch__name font-plush">{{ puppy.name }}</span>
+            <span class="tp-sketch__meta">{{ puppy.breed }} · {{ puppy.gender }} · {{ puppy.age }}</span>
+          </a>
+        </li>
+      {% empty %}
+        <li class="col-span-full py-12 text-center">
+          <p class="font-plush text-2xl text-cocoa">No puppies found matching your search.</p>
+          <a href="/puppies/" class="btn btn-primary mt-4">View All Puppies</a>
+        </li>
+      {% endfor %}
+    </ul></div></div></section><section aria-labelledby="gone-title" class="tp-gone-strip"><div class="gutter mx-auto flex max-w-[110rem] flex-col gap-10 md:flex-row md:items-center"><div class="md:w-1/3" data-reveal="true"><h2 id="gone-title" class="font-plush text-big">Already gone home</h2><p class="mt-3 text-cocoa-soft">These puppies have found their families.</p><a class="btn btn-primary mt-6" href="/puppies/#gone-home">See the puppies who&#x27;ve gone home</a></div><ul class="tp-gone-strip__row" aria-label="Some puppies who have gone home">
+      {% for puppy in gone_home_puppies %}
+        <li>
+          <a class="tp-sketch tp-sketch--small" data-reveal="true" style="--tilt:-0.63deg;--d:0ms;--wash:#f9cdbf" aria-label="{{ puppy.name }}, {{ puppy.breed }}, {{ puppy.gender }}, gone home" href="/puppies/{{ puppy.id }}/">
+            <span class="tp-sketch__frame">
+              <span class="tp-sketch__photo">
+                {% if puppy.image %}
+                  <img src="{{ puppy.image.url }}" alt="{{ puppy.name }}" class="h-full w-full object-cover">
+                {% else %}
+                  <img src="https://puppy.instabizweb.com/_next/image?url=%2Fmedia%2Fcrgs9ih6as_M%2Fe37bafb1bf%2Fb942a5_344e49c6c34940d2b09a3ddd5c2e3234-mv2.jpg&w=1200&q=75" alt="{{ puppy.name }}" class="h-full w-full object-cover">
+                {% endif %}
+              </span>
+              <span class="tp-sketch__sticker font-scrawl" style="background:#2a170e;color:#fffdf8;">Gone home</span>
+            </span>
+            <span class="tp-sketch__name font-plush">{{ puppy.name }}</span>
+            <span class="tp-sketch__meta">{{ puppy.breed }} · {{ puppy.gender }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul></div></section></div>
+</main>
 {% endblock %}
